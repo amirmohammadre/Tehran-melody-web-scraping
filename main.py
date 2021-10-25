@@ -1,3 +1,4 @@
+
 """import libraries"""
 import requests
 import re
@@ -24,6 +25,18 @@ def Scraper():
     for p_name, p_price in zip(products_name, products_price):
         conn.hset("Products", re.sub(r'\s+',' ', p_name.text).strip(), re.sub(r'\s+',' ', p_price.text).strip())
 
+    
+    """List of products above 10% discount with name and price"""
+    products_sale = soup.find_all('span', attrs={'class':'sale-percent en-font small'})
+
+    fout = open("sales.txt", "w") 
+
+    for p_sale, p_name, p_price in zip(products_sale, products_name, products_price):
+        if int(float(re.sub(r'\%+', '',p_sale.text))) >= 10:
+            fout.write(p_sale.text.strip() + " " + p_name.text.strip() + " = " + p_price.text.strip() + "\n")
+            
+    fout.close()
+
 
 try:
     """Connect to database redis"""
@@ -48,4 +61,6 @@ else:
     numbers = conn.hlen("Products")
     print("""\n%s Products were successfully added to the database ;)
     \nPlease check the database to display products and their prices""" % (numbers))
+
+    print("Also, a list of products equal to or above the 10% discount is created in the sales.txt file")
 
