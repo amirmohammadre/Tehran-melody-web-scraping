@@ -4,7 +4,7 @@ This program Receives the list of products for special sale on the Tehran Melody
 
 ---
 
-> ### **How to run**:
+### **How to run**:
 
 ```
 python3 main.py
@@ -14,7 +14,7 @@ redis-cli --raw
 HGETALL Products
 ```
 
-> ### **How to run with docker**:
+### **How to run with docker**:
 
 ```
 sudo docker build -t myapp:v1 .
