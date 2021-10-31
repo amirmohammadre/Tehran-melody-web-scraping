@@ -1,0 +1,22 @@
+
+version: '2'
+services:
+  redis:
+    image: redis:latest
+    container_name: redis-server
+    networks:
+      - mynet
+  app:
+    build: .
+    container_name: pyapp
+    networks:
+      - mynet
+    environment:
+      - REDIS_HOST=redis-server
+    depends_on:
+      - redis
+
+networks:
+  mynet:
+    external:
+      true
