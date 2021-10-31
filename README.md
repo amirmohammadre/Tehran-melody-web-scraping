@@ -14,7 +14,7 @@ redis-cli --raw
 HGETALL Products
 ```
 
-### **How to run with docker**:
+### **How to run with Docker**:
 
 ```
 sudo docker build -t myapp:v1 .
@@ -24,6 +24,12 @@ sudo docker network create mynet
 sudo docker run -d --net mynet --name redis-server redis:latest
 
 sudo docker run --rm -it --name pyapp --net mynet -e REDIS_HOST=redis-server myapp:v1
+```
+
+### **How to run with Docker Compose**:
+
+```
+sudo docker-compose up
 ```
 
 
