@@ -4,6 +4,7 @@ import requests
 import re
 import redis
 import time as tm
+import os
 from bs4 import BeautifulSoup
 
 
@@ -40,7 +41,8 @@ def Scraper():
 
 try:
     """Connect to database redis"""
-    conn = redis.Redis(host=redis_host, port=redis_port, db=redis_db,
+    conn = redis.Redis(host=os.environ.get("REDIS_HOST", redis_host)
+    , port=int(os.environ.get("REDIS_PORT", redis_port)), db=redis_db, 
     password=redis_pass, decode_responses=True)
 
 except Exception as rsn:
