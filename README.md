@@ -1,6 +1,7 @@
-# Tehran Melody Web Scraping 
+# Tehran Melody Web Scraper: Track Special Sale Products Efficiently
 
-This program Receives the list of products for special sale on the Tehran Melody website and places them one the Redis database. Also, a list of products equal to or above the 10% discount is created in the sales.txt file.
+A Python-based web scraper for tracking special sale products on the Tehran Melody website.
+This program automatically retrieves the list of discounted products from the Tehran Melody website and processes the data for efficient storage and analysis.
 
 ---
 
